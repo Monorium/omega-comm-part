@@ -49,10 +49,10 @@ def _recvArduino(tele):
         servo = None
         if pin in servoList:
             servo = servoList[pin]
+            servo.move(angle)
         else:
             servo = JointServo(pin, angle)
             servoList[pin] = servo
-        servo.move(angle)
     except Exception as e:
         print("error :" + e)
 
