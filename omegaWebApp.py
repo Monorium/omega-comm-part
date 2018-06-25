@@ -57,10 +57,10 @@ def _recvArduino(tele):
         print("error :" + e)
 
 
+# Arduino向けSerial通信開始
+arduino.startRecvThread(_recvArduino)
+
 # Webサーバ起動
 webSrv.WebSocketThreaded = True
 webSrv.AcceptWebSocketCallback = _acceptWebSocketCallback
 webSrv.Start(threaded=True)
-
-# Arduino向けSerial通信開始
-arduino.startRecvThread(_recvArduino)
